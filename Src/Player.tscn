@@ -1,0 +1,194 @@
+[gd_scene load_steps=37 format=2]
+
+[ext_resource path="res://Src/Scripts/StateMachine/States/Air.cs" type="Script" id=1]
+[ext_resource path="res://Art/ReaperPlayer.png" type="Texture" id=2]
+[ext_resource path="res://Art/ReaverAttack.png" type="Texture" id=3]
+[ext_resource path="res://Art/ReaperJump.png" type="Texture" id=4]
+[ext_resource path="res://Src/Scripts/StateMachine/States/Idle.cs" type="Script" id=5]
+[ext_resource path="res://Src/Scripts/StateMachine/States/Run.cs" type="Script" id=6]
+[ext_resource path="res://Src/Scripts/StateMachine/StateMachine.cs" type="Script" id=7]
+[ext_resource path="res://Src/Scripts/Player.cs" type="Script" id=8]
+[ext_resource path="res://Src/Scripts/StateMachine/States/Start.cs" type="Script" id=9]
+[ext_resource path="res://Src/Scripts/StateMachine/States/Punch.cs" type="Script" id=10]
+[ext_resource path="res://Src/Scripts/StateMachine/States/Dive.cs" type="Script" id=11]
+[ext_resource path="res://Src/Scripts/StateMachine/States/Teleport.cs" type="Script" id=12]
+[ext_resource path="res://Src/Scripts/StateMachine/States/WallSlide.cs" type="Script" id=13]
+[ext_resource path="res://Art/Audio/Jump.wav" type="AudioStream" id=14]
+[ext_resource path="res://Art/Audio/HitHurt.wav" type="AudioStream" id=15]
+[ext_resource path="res://Src/Scripts/StateMachine/States/Shoot.cs" type="Script" id=16]
+[ext_resource path="res://Art/Audio/GunFire.wav" type="AudioStream" id=17]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 3 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 3 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 3 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 2 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 2 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 2 )
+region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 2 )
+region = Rect2( 192, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 4 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 4 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=16]
+animations = [ {
+"frames": [ SubResource( 1 ) ],
+"loop": false,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"loop": false,
+"name": "Attack",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
+"loop": false,
+"name": "Jump",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 3, 14 )
+
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 5, 4 )
+
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 3, 14 )
+
+[node name="Player" type="KinematicBody2D"]
+collision_layer = 2
+script = ExtResource( 8 )
+Speed = Vector2( 100, 200 )
+_hurtSound = ExtResource( 15 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 16 )
+animation = "Idle"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 2 )
+shape = SubResource( 17 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0, -40 )
+current = true
+zoom = Vector2( 0.3, 0.3 )
+
+[node name="PunchArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PunchArea"]
+position = Vector2( 11, -3 )
+shape = SubResource( 18 )
+disabled = true
+
+[node name="HitArea" type="Area2D" parent="."]
+monitorable = false
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
+position = Vector2( 0, 2 )
+shape = SubResource( 19 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+cast_to = Vector2( 100, 0 )
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 7 )
+InitialState = NodePath("Start")
+
+[node name="Start" type="Node" parent="StateMachine"]
+script = ExtResource( 9 )
+
+[node name="Shoot" type="Node" parent="StateMachine"]
+script = ExtResource( 16 )
+_shootSound = ExtResource( 17 )
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource( 5 )
+
+[node name="Air" type="Node" parent="StateMachine"]
+script = ExtResource( 1 )
+_jumpSound = ExtResource( 14 )
+
+[node name="Run" type="Node" parent="StateMachine"]
+script = ExtResource( 6 )
+
+[node name="Punch" type="Node" parent="StateMachine"]
+script = ExtResource( 10 )
+
+[node name="Dive" type="Node" parent="StateMachine"]
+script = ExtResource( 11 )
+
+[node name="Teleport" type="Node" parent="StateMachine"]
+script = ExtResource( 12 )
+
+[node name="WallSlide" type="Node" parent="StateMachine"]
+script = ExtResource( 13 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = -15.0
+
+[node name="Muzzle" type="Node2D" parent="."]
+position = Vector2( 2, 0 )
+
+[connection signal="animation_finished" from="Sprite" to="StateMachine/Punch" method="_on_Sprite_animation_finished"]
+[connection signal="area_entered" from="HitArea" to="." method="_on_HitArea_area_entered"]

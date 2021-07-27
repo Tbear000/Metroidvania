@@ -1,0 +1,331 @@
+[gd_scene load_steps=58 format=2]
+
+[ext_resource path="res://Src/Scripts/StateMachine/StateMachine.cs" type="Script" id=1]
+[ext_resource path="res://Src/Scripts/Enemy.cs" type="Script" id=2]
+[ext_resource path="res://Art/skeletonstand-Sheet-Sheet.png" type="Texture" id=3]
+[ext_resource path="res://Art/skeletonwalk-Sheet-Sheet.png" type="Texture" id=4]
+[ext_resource path="res://Art/skeletonhit-Sheet.png" type="Texture" id=5]
+[ext_resource path="res://Src/Scripts/StateMachine/States/EnemyStates/Walk.cs" type="Script" id=6]
+[ext_resource path="res://Art/skeletonattack-Sheet.png" type="Texture" id=7]
+[ext_resource path="res://Art/skeletondeath-Sheet.png" type="Texture" id=8]
+[ext_resource path="res://Src/Scripts/StateMachine/States/EnemyStates/Death.cs" type="Script" id=9]
+[ext_resource path="res://Src/Scripts/StateMachine/States/EnemyStates/Attack.cs" type="Script" id=10]
+[ext_resource path="res://Src/Scripts/StateMachine/States/EnemyStates/Hit.cs" type="Script" id=11]
+[ext_resource path="res://Art/Audio/HitHurt.wav" type="AudioStream" id=12]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 78, 121 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 78, 0, 78, 121 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 156, 0, 78, 121 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 234, 0, 78, 121 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 312, 0, 78, 121 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 390, 0, 78, 121 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 468, 0, 78, 121 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 546, 0, 78, 121 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 100, 121 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 100, 0, 100, 121 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 200, 0, 100, 121 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 300, 0, 100, 121 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 400, 0, 100, 121 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 500, 0, 100, 121 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 600, 0, 100, 121 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 700, 0, 100, 121 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 800, 0, 100, 121 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 900, 0, 100, 121 )
+
+[sub_resource type="AtlasTexture" id=19]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 1000, 0, 100, 121 )
+
+[sub_resource type="AtlasTexture" id=20]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 1100, 0, 100, 121 )
+
+[sub_resource type="AtlasTexture" id=21]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 1200, 0, 100, 121 )
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 78, 121 )
+
+[sub_resource type="AtlasTexture" id=23]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 78, 0, 78, 121 )
+
+[sub_resource type="AtlasTexture" id=24]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 156, 0, 78, 121 )
+
+[sub_resource type="AtlasTexture" id=25]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 234, 0, 78, 121 )
+
+[sub_resource type="AtlasTexture" id=26]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 312, 0, 78, 121 )
+
+[sub_resource type="AtlasTexture" id=27]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 390, 0, 78, 121 )
+
+[sub_resource type="AtlasTexture" id=28]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 111, 121 )
+
+[sub_resource type="AtlasTexture" id=29]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 111, 0, 111, 121 )
+
+[sub_resource type="AtlasTexture" id=30]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 222, 0, 111, 121 )
+
+[sub_resource type="AtlasTexture" id=31]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 333, 0, 111, 121 )
+
+[sub_resource type="AtlasTexture" id=32]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 444, 0, 111, 121 )
+
+[sub_resource type="AtlasTexture" id=33]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 555, 0, 111, 121 )
+
+[sub_resource type="AtlasTexture" id=34]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 78, 121 )
+
+[sub_resource type="AtlasTexture" id=35]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 78, 0, 78, 121 )
+
+[sub_resource type="AtlasTexture" id=36]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 156, 0, 78, 121 )
+
+[sub_resource type="AtlasTexture" id=37]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 234, 0, 78, 121 )
+
+[sub_resource type="AtlasTexture" id=38]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 312, 0, 78, 121 )
+
+[sub_resource type="AtlasTexture" id=39]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 390, 0, 78, 121 )
+
+[sub_resource type="AtlasTexture" id=40]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 468, 0, 78, 121 )
+
+[sub_resource type="AtlasTexture" id=41]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 546, 0, 78, 121 )
+
+[sub_resource type="SpriteFrames" id=42]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"loop": false,
+"name": "Hit",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ) ],
+"loop": false,
+"name": "Death",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ) ],
+"loop": false,
+"name": "Attack",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=43]
+radius = 8.0
+height = 18.0
+
+[sub_resource type="RectangleShape2D" id=44]
+extents = Vector2( 10, 17 )
+
+[sub_resource type="RectangleShape2D" id=45]
+extents = Vector2( 4, 8 )
+
+[node name="Enemy" type="KinematicBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource( 2 )
+Speed = Vector2( 50, 100 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -31 )
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 42 )
+animation = "Walk"
+frame = 3
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -17 )
+shape = SubResource( 43 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 0, -17 )
+enabled = true
+cast_to = Vector2( 10, 0 )
+collision_mask = 3
+
+[node name="Area2D" type="Area2D" parent="."]
+monitorable = false
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, -17 )
+shape = SubResource( 44 )
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 1 )
+InitialState = NodePath("Walk")
+
+[node name="Walk" type="Node" parent="StateMachine"]
+script = ExtResource( 6 )
+
+[node name="Death" type="Node" parent="StateMachine"]
+script = ExtResource( 9 )
+
+[node name="Hit" type="Node" parent="StateMachine"]
+script = ExtResource( 11 )
+
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource( 10 )
+
+[node name="AttackArea" type="Area2D" parent="."]
+position = Vector2( 13, -17 )
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2( 1, 0 )
+shape = SubResource( 45 )
+disabled = true
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+position = Vector2( 0, -10 )
+process_parent = true
+physics_process_parent = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 12 )
+volume_db = -15.0
+pitch_scale = 0.5
+
+[connection signal="animation_finished" from="AnimatedSprite" to="StateMachine/Death" method="_on_AnimatedSprite_animation_finished"]
+[connection signal="animation_finished" from="AnimatedSprite" to="StateMachine/Attack" method="_on_AnimatedSprite_animation_finished"]
+[connection signal="animation_finished" from="AnimatedSprite" to="StateMachine/Hit" method="_on_AnimatedSprite_animation_finished"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
