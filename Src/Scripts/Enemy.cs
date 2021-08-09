@@ -12,11 +12,13 @@ public class Enemy : KinematicBody2D
 	public AnimatedSprite sprite;
 	public RayCast2D raycast;
 	[Export]
-	public int MaxHealth = 1;
+	public int MaxHealth = 5;
 	public int _health;
 	public Area2D AttackArea;
 	public CollisionShape2D AttackCollision;
 	public AudioStreamPlayer2D audio;
+
+	private ProgressBar _Healthbar;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -29,12 +31,16 @@ public class Enemy : KinematicBody2D
 		raycast = GetNode<RayCast2D>("RayCast2D");
 		AttackArea = GetNode<Area2D>("AttackArea");
 		AttackCollision = GetNode<CollisionShape2D>("AttackArea/CollisionShape2D");
+		_Healthbar = GetNode<ProgressBar>("ProgressBar");
+		_Healthbar.MaxValue = MaxHealth;
 		_health = MaxHealth;
+		_Healthbar.Value = _health;
 	}
 	
 	private void _on_Area2D_area_entered(object area)
 	{
 		_health -= 1;
+		_Healthbar.Value = _health;
 		audio.Play();
 		if(_health <= 0)
 			_stateMachine.TransitionTo("Death");

@@ -15,9 +15,9 @@ public class WallSlide : PlayerState
 		{
 			_player.Velocity.y = Mathf.Min(_player.Velocity.y, 30);
 			_player.MovePlayer(delta);
-			if (Input.IsActionJustPressed("ui_up") && _player.WallJumps > 0)
+			if (Input.IsActionJustPressed("ui_up") && Global.WallJumps > 0)
 			{
-				_player.WallJumps -= 1;
+				Global.WallJumps -= 1;
 				var message = new Dictionary<string, bool>()
 				{
 					{ "doJump", true }

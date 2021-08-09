@@ -7,6 +7,7 @@ public class Punch : PlayerState
 	public override void Enter(Dictionary<string, bool> message = null)
 	{
 		_player.sprite.Play("Attack");
+		_player.punchCollision.Disabled = false;
 	}
 		
 	private void _on_Sprite_animation_finished()
@@ -15,12 +16,5 @@ public class Punch : PlayerState
 			_player.punchCollision.Disabled = true;
 			_stateMachine.TransitionTo("Idle");
 		}
-	}
-	
-	public override void PhysicsUpdate(float delta)
-	{
-		_player.MovePlayer(delta);
-		_player.punchCollision.Disabled = false;
-		
 	}
 }

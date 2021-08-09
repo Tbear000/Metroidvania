@@ -33,6 +33,10 @@ public class Dive : PlayerState
 			_player.punchCollision.Disabled = true;
 			_stateMachine.TransitionTo("Idle");
 		}
+		else if(_player.IsOnWall()){
+			_player.punchCollision.Disabled = true;
+			_stateMachine.TransitionTo("WallSlide");
+		}
 	}
 	
 	public void DivePlayer(float delta)

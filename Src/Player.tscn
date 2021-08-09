@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Src/Scripts/StateMachine/States/Air.cs" type="Script" id=1]
 [ext_resource path="res://Art/ReaperPlayer.png" type="Texture" id=2]
@@ -17,98 +17,104 @@
 [ext_resource path="res://Art/Audio/HitHurt.wav" type="AudioStream" id=15]
 [ext_resource path="res://Src/Scripts/StateMachine/States/Shoot.cs" type="Script" id=16]
 [ext_resource path="res://Art/Audio/GunFire.wav" type="AudioStream" id=17]
-
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 32, 32 )
+[ext_resource path="res://Src/Shaders/PixelTrail.tres" type="Material" id=18]
 
 [sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 3 )
-region = Rect2( 32, 0, 32, 32 )
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 3 )
-region = Rect2( 64, 0, 32, 32 )
+region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 3 )
-region = Rect2( 96, 0, 32, 32 )
+region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 3 )
-region = Rect2( 128, 0, 32, 32 )
+region = Rect2( 64, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 2 )
-region = Rect2( 32, 0, 32, 32 )
+atlas = ExtResource( 3 )
+region = Rect2( 96, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 2 )
-region = Rect2( 64, 0, 32, 32 )
+atlas = ExtResource( 3 )
+region = Rect2( 128, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 2 )
-region = Rect2( 96, 0, 32, 32 )
+region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 2 )
-region = Rect2( 128, 0, 32, 32 )
+region = Rect2( 64, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 2 )
-region = Rect2( 160, 0, 32, 32 )
+region = Rect2( 96, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 2 )
-region = Rect2( 192, 0, 32, 32 )
+region = Rect2( 128, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 32, 32 )
+atlas = ExtResource( 2 )
+region = Rect2( 160, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 4 )
-region = Rect2( 32, 0, 32, 32 )
+atlas = ExtResource( 2 )
+region = Rect2( 192, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 4 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 4 )
 region = Rect2( 64, 0, 32, 32 )
 
-[sub_resource type="SpriteFrames" id=16]
+[sub_resource type="SpriteFrames" id=18]
 animations = [ {
-"frames": [ SubResource( 1 ) ],
+"frames": [ SubResource( 3 ) ],
 "loop": false,
 "name": "Idle",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": false,
 "name": "Attack",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
 "loop": true,
 "name": "Walk",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
+"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
 "loop": false,
 "name": "Jump",
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=17]
-extents = Vector2( 3, 14 )
-
-[sub_resource type="RectangleShape2D" id=18]
-extents = Vector2( 5, 4 )
-
 [sub_resource type="RectangleShape2D" id=19]
 extents = Vector2( 3, 14 )
+
+[sub_resource type="RectangleShape2D" id=20]
+extents = Vector2( 5, 4 )
+
+[sub_resource type="RectangleShape2D" id=21]
+extents = Vector2( 3, 14 )
+
+[sub_resource type="StyleBoxLine" id=22]
+color = Color( 0.862745, 1, 0, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=23]
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
@@ -117,13 +123,14 @@ Speed = Vector2( 100, 200 )
 _hurtSound = ExtResource( 15 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 16 )
+material = ExtResource( 18 )
+frames = SubResource( 18 )
 animation = "Idle"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 2 )
-shape = SubResource( 17 )
+shape = SubResource( 19 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 0, -40 )
@@ -136,7 +143,7 @@ collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PunchArea"]
 position = Vector2( 11, -3 )
-shape = SubResource( 18 )
+shape = SubResource( 20 )
 disabled = true
 
 [node name="HitArea" type="Area2D" parent="."]
@@ -146,7 +153,7 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
 position = Vector2( 0, 2 )
-shape = SubResource( 19 )
+shape = SubResource( 21 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 cast_to = Vector2( 100, 0 )
@@ -189,6 +196,21 @@ volume_db = -15.0
 
 [node name="Muzzle" type="Node2D" parent="."]
 position = Vector2( 2, 0 )
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+margin_left = -5.0
+margin_top = -19.0
+margin_right = 7.0
+margin_bottom = -17.0
+custom_styles/fg = SubResource( 22 )
+custom_styles/bg = SubResource( 23 )
+max_value = 4.0
+step = 1.0
+value = 4.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="animation_finished" from="Sprite" to="StateMachine/Punch" method="_on_Sprite_animation_finished"]
 [connection signal="area_entered" from="HitArea" to="." method="_on_HitArea_area_entered"]
